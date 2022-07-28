@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Task.css';
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 function Task({ text, complete }) {
 

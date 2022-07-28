@@ -1,5 +1,6 @@
 import './App.css';
 import Logo from './components/Logo';
+import Task from './components/Task';
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
       <Logo />
       <div className='task-list-content'>
         <h1>Tareas</h1>
+        <Task 
+         text='Aprender React' />
       </div>
     </div>
   );

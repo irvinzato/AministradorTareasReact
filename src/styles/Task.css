@@ -13,8 +13,13 @@
   cursor: pointer;
 }
 
-/* Efecto de degradado con pseudoclases */
-.task-container:nth-child(3n + 1) {
+.task-completed {
+  background: #5a01a7;
+  text-decoration: line-through;
+}
+
+/* Efecto de degradado con pseudoclases, detalles si los dejo para mostrar background de ".task-completed" */
+/* .task-container:nth-child(3n + 1) {
   background: #1b1b32;
 }
 
@@ -24,12 +29,7 @@
 
 .task-container:nth-child(3n + 3) {
   background: #3b3b4f;
-}
-
-.task-completed {
-  background: #5a01a7;
-  text-decoration: line-through;
-}
+} */
 
 .task-text {
   width: 100%;

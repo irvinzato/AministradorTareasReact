@@ -10,19 +10,27 @@ function ListOfTask() {
 
   const addTask = ( task ) => {
     console.log("Agregare tarea ", task);
+    if( task.text.trim() ) {
+      task.text = task.text.trim();
+      //Con esto le digo que quiero un arreglo con la nueva tarea al principio y el resto de tareas
+      const updatedTasks = [ task, ...tasks ]; //Con el operador "..." deja de ser un arreglo "tasks" y mete cada uno de sus valores al nuevo arreglo
+      setTasks(updatedTasks);
+    }
   }
 
   //Se puede usar fragmentos(Son para que se pueda escribir la estructura y no aparecen reflejados cuando se crea en HTML) "<> </>", son etiquetas que no tienen definición
   return(
     <>
-      <TaskForm onSubmit={ addTask } />
+      <TaskForm sendTask={ addTask } />
       <div className='task-list-container'>
   {/* Para renderizar una lista de componentes se hace de la sig manera, usando llaves */}
         {
           tasks.map((task) =>
-          <Task 
-          text={ task.text }
-          complete={ task.completed } />
+          <Task
+            key={ task.id } //Es importante usar "key"(no es un prop) para que no tenga problemas React al renderizar el elemento unico
+            id= { task.id } 
+            text={ task.text }
+            completed={ task.completed } />
           )
         }
       </div>

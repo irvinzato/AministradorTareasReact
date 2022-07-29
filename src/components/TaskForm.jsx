@@ -20,7 +20,7 @@ function TaskForm( props ) {
       completed: false
     }
     //console.log("Enviare ", newTask);
-    props.onSubmit( newTask );
+    props.sendTask( newTask );
   }
 
   return(

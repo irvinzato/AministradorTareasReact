@@ -9,13 +9,20 @@ function ListOfTask() {
   const [ tasks, setTasks ] = useState([]);
 
   const addTask = ( task ) => {
-    console.log("Agregare tarea ", task);
+    console.log("Agregare tarea solo si tiene texto", task);
     if( task.text.trim() ) {
       task.text = task.text.trim();
       //Con esto le digo que quiero un arreglo con la nueva tarea al principio y el resto de tareas
       const updatedTasks = [ task, ...tasks ]; //Con el operador "..." deja de ser un arreglo "tasks" y mete cada uno de sus valores al nuevo arreglo
       setTasks(updatedTasks);
     }
+  }
+
+  const deleteTaskOfList = ( id ) => {
+    const updatedTasks = tasks.filter( task => {
+      return task.id !== id;
+    });
+    setTasks(updatedTasks);
   }
 
   //Se puede usar fragmentos(Son para que se pueda escribir la estructura y no aparecen reflejados cuando se crea en HTML) "<> </>", son etiquetas que no tienen definición
@@ -27,10 +34,11 @@ function ListOfTask() {
         {
           tasks.map((task) =>
           <Task
-            key={ task.id } //Es importante usar "key"(no es un prop) para que no tenga problemas React al renderizar el elemento unico
+            key= { task.id } //Es importante usar "key"(no es un prop) para que no tenga problemas React al renderizar el elemento unico
             id= { task.id } 
-            text={ task.text }
-            completed={ task.completed } />
+            text= { task.text }
+            completed= { task.completed }
+            deleteTask= { deleteTaskOfList } />
           )
         }
       </div>

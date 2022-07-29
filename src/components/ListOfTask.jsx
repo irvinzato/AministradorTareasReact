@@ -5,8 +5,9 @@ import '../styles/ListOfTask.css';
 
 
 function ListOfTask() {
-  //inicialmente "tasks" sera un arreglo vacio(Uso de Hooks)
-  const [ tasks, setTasks ] = useState([]);
+  //inicialmente "tasks" sera un arreglo vacio(Uso de Hooks), solo llamando "setTask" se renderizara el componente
+  //console.log(JSON.parse(localStorage.getItem("tasks")));
+  const [ tasks, setTasks ] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
 
   const addTask = ( task ) => {
     console.log("Agregare tarea solo si tiene texto", task);
@@ -15,6 +16,7 @@ function ListOfTask() {
       //Con esto le digo que quiero un arreglo con la nueva tarea al principio y el resto de tareas
       const updatedTasks = [ task, ...tasks ]; //Con el operador "..." deja de ser un arreglo "tasks" y mete cada uno de sus valores al nuevo arreglo
       setTasks(updatedTasks);
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     }
   }
 
@@ -23,6 +25,7 @@ function ListOfTask() {
       return task.id !== id;
     });
     setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
   const taskCompletedOfList = ( id ) => {
@@ -33,6 +36,7 @@ function ListOfTask() {
       return task;
     });
     setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
   //Se puede usar fragmentos(Son para que se pueda escribir la estructura y no aparecen reflejados cuando se crea en HTML) "<> </>", son etiquetas que no tienen definición

@@ -1,8 +1,6 @@
 import './App.css';
 import Logo from './components/Logo';
 import ListOfTask from './components/ListOfTask';
-import Task from './components/Task';
-import TaskForm from './components/TaskForm';
 
 function App() {
   return (

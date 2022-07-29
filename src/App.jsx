@@ -1,5 +1,6 @@
 import './App.css';
 import Logo from './components/Logo';
+import ListOfTask from './components/ListOfTask';
 import Task from './components/Task';
 import TaskForm from './components/TaskForm';
 
@@ -9,9 +10,7 @@ function App() {
       <Logo />
       <div className='task-list-content'>
         <h1>Tareas</h1>
-        <TaskForm />
-        <Task 
-         text='Aprender React' />
+        <ListOfTask />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import '../styles/TaskForm.css';
 
 function TaskForm( props ) {
@@ -13,12 +14,13 @@ function TaskForm( props ) {
   const handleShipping = ( e ) => {
     //Con esta funcion evitamos que vuelva a cargar la pagina al enviar formulario
     e.preventDefault();
-    console.log("Enviare ", value);
     const newTask = {
-      id: '123',
+      id: uuidv4(),       //Para usar la funcion instale "npm i uuid"
       text: value,
       completed: false
     }
+    //console.log("Enviare ", newTask);
+    props.onSubmit( newTask );
   }
 
   return(
